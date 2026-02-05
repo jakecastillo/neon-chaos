@@ -170,7 +170,7 @@ export default function RoomClient({ roomId }: { roomId: string }) {
       <header className="flex items-start justify-between gap-3 pt-2">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <h1 className="truncate text-lg font-semibold tracking-tight">
+            <h1 className="truncate text-lg font-semibold tracking-tight neon-text-cyan">
               {room?.name ?? "Room"}
             </h1>
             <Badge className="bg-white/10 text-white/70">Roulette Vote</Badge>

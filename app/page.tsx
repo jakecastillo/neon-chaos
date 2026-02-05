@@ -9,7 +9,7 @@ export default function HomePage() {
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-4 px-4 pb-[calc(20px+env(safe-area-inset-bottom))] pt-[calc(20px+env(safe-area-inset-top))]">
       <header className="flex items-center justify-between pt-2">
         <div className="space-y-1">
-          <h1 className="text-2xl font-semibold tracking-tight">Neon Chaos</h1>
+          <h1 className="text-2xl font-semibold tracking-tight neon-text-cyan">Neon Chaos</h1>
           <p className="text-sm text-white/70">
             Chaotic arcade casino decisions for groups.
           </p>

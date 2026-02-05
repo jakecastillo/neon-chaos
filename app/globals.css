@@ -11,6 +11,10 @@
   --input: 240 7% 18%;
   --ring: 187 92% 50%;
   --radius: 16px;
+  --neon-cyan: 187 92% 50%;
+  --neon-magenta: 320 100% 50%;
+  --neon-green: 150 100% 50%;
+  --neon-yellow: 48 100% 67%;
 }
 
 html,
@@ -21,23 +25,104 @@ body {
 body {
   background: radial-gradient(
       1200px 800px at 20% -10%,
-      rgba(0, 255, 229, 0.18),
+      rgba(0, 255, 229, 0.25),
       transparent 50%
     ),
     radial-gradient(
       900px 700px at 110% 10%,
-      rgba(255, 0, 196, 0.14),
+      rgba(255, 0, 196, 0.2),
       transparent 45%
     ),
     radial-gradient(
       1200px 900px at 40% 120%,
-      rgba(255, 238, 0, 0.08),
+      rgba(0, 255, 136, 0.15),
       transparent 55%
     ),
     hsl(var(--background));
   color: hsl(var(--foreground));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Neon text effects */
+.neon-text-cyan {
+  text-shadow: 0 0 5px hsl(var(--neon-cyan)), 0 0 10px hsl(var(--neon-cyan)), 0 0 15px hsl(var(--neon-cyan));
+}
+
+.neon-text-magenta {
+  text-shadow: 0 0 5px hsl(var(--neon-magenta)), 0 0 10px hsl(var(--neon-magenta)), 0 0 15px hsl(var(--neon-magenta));
+}
+
+.neon-text-green {
+  text-shadow: 0 0 5px hsl(var(--neon-green)), 0 0 10px hsl(var(--neon-green)), 0 0 15px hsl(var(--neon-green));
+}
+
+/* Neon border effects */
+.neon-border-cyan {
+  box-shadow: 0 0 5px hsl(var(--neon-cyan)), inset 0 0 5px hsl(var(--neon-cyan));
+  border-color: hsl(var(--neon-cyan));
+}
+
+.neon-border-magenta {
+  box-shadow: 0 0 5px hsl(var(--neon-magenta)), inset 0 0 5px hsl(var(--neon-magenta));
+  border-color: hsl(var(--neon-magenta));
+}
+
+.neon-border-green {
+  box-shadow: 0 0 5px hsl(var(--neon-green)), inset 0 0 5px hsl(var(--neon-green));
+  border-color: hsl(var(--neon-green));
+}
+
+/* Pulsing animation */
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 10px hsl(var(--neon-cyan)), 0 0 20px hsl(var(--neon-cyan)), 0 0 30px hsl(var(--neon-cyan));
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px hsl(var(--neon-cyan)), 0 0 25px hsl(var(--neon-cyan)), 0 0 40px hsl(var(--neon-cyan));
+  }
+}
+
+.pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+/* Particle background effect */
+.particle-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: hsl(var(--neon-cyan));
+  box-shadow: 0 0 10px hsl(var(--neon-cyan));
+  animation: float 10s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
 }
 
 .nc-scanlines::before {

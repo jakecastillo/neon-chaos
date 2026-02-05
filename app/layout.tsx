@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 import "./globals.css"
 import { Providers } from "@/components/providers"
 import { cn } from "@/lib/utils"
+import { ParticleBg } from "@/components/particle-bg"
 
 export const metadata: Metadata = {
   title: "Neon Chaos",
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={cn("nc-scanlines min-h-dvh")}>
+        <ParticleBg />
         <Providers>{children}</Providers>
       </body>
     </html>
