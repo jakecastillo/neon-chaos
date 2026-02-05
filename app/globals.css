@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 7% 6%;
+  --foreground: 210 40% 98%;
+  --card: 240 8% 10%;
+  --card-foreground: 210 40% 98%;
+  --border: 240 7% 18%;
+  --input: 240 7% 18%;
+  --ring: 187 92% 50%;
+  --radius: 16px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(
+      1200px 800px at 20% -10%,
+      rgba(0, 255, 229, 0.18),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 700px at 110% 10%,
+      rgba(255, 0, 196, 0.14),
+      transparent 45%
+    ),
+    radial-gradient(
+      1200px 900px at 40% 120%,
+      rgba(255, 238, 0, 0.08),
+      transparent 55%
+    ),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.nc-scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06) 0px,
+    rgba(255, 255, 255, 0.06) 1px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0) 6px
+  );
+  mix-blend-mode: overlay;
+}
+
+.nc-scanlines::after {
+  content: "";
+  position: fixed;
+  inset: -40% 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 229, 0.28),
+    transparent
+  );
+  animation: scanline-move 8s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nc-scanlines::after {
+    animation: none;
+  }
+}
+
